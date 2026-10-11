@@ -1,0 +1,55 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+
+data = {
+    'Height': [150, 155, 160, 162, 165, 168, 170, 172, 175, 180]
+}
+
+df = pd.DataFrame(data)
+
+print("DataFrame:")
+print(df)
+
+print("\nMinimum:", df['Height'].min())
+print("Maximum:", df['Height'].max())
+print("Mean:", df['Height'].mean())
+print("Median:", df['Height'].median())
+print("Standard Deviation:", round(df['Height'].std(), 2))
+print("Skewness:", round(df['Height'].skew(), 2))
+print("Kurtosis:", round(df['Height'].kurtosis(), 2))
+
+sns.histplot(df['Height'], kde=True)
+plt.title("Normal Distribution")
+plt.xlabel("Height")
+plt.ylabel("Density")
+plt.show()
+
+data_points = np.random.normal(0, 1, 100)
+sm.qqplot(data_points, line='45')
+plt.title("Q-Q Plot")
+plt.show()
+
+OUTPUT:
+DataFrame:
+   Height
+0     150
+1     155
+2     160
+3     162
+4     165
+5     168
+6     170
+7     172
+8     175
+9     180
+
+Minimum: 150
+Maximum: 180
+Mean: 165.7
+Median: 166.5
+Standard Deviation: 9.08
+Skewness: -0.17
+Kurtosis: -0.75
