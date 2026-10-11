@@ -1,0 +1,80 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create a dataset
+data = {
+    'Year': [2020, 2021, 2022, 2023, 2024],
+    'Students': [100, 150, 180, 220, 280]
+}
+
+df = pd.DataFrame(data)
+
+# Line Plot
+plt.plot(df['Year'], df['Students'], marker='o')
+plt.title("Students Over 5 Years")
+plt.xlabel("Year")
+plt.ylabel("Number of Students")
+plt.show()
+
+# Bar Plot
+plt.bar(df['Year'], df['Students'], color='green')
+plt.title("Students Over 5 Years")
+plt.xlabel("Year")
+plt.ylabel("Number of Students")
+plt.show()
+
+# Histogram
+plt.hist(df['Students'], bins=5)
+plt.title("Distribution of Students")
+plt.xlabel("Number of Students")
+plt.ylabel("Frequency")
+plt.show()
+
+# Scatter Plot
+plt.scatter(df['Year'], df['Students'])
+plt.title("Year vs Students")
+plt.xlabel("Year")
+plt.ylabel("Number of Students")
+plt.show()
+
+OUTPUT:Students Over 5 Years
+
+Students
+280 |                         ●
+220 |                    ●
+180 |               ●
+150 |          ●
+100 |     ●
+    +------------------------------
+      2020  2021  2022  2023  2024
+                  Year
+Students Over 5 Years
+
+Students
+280 |                 █
+220 |             █   █
+180 |         █   █   █
+150 |     █   █   █   █
+100 | █   █   █   █   █
+    +------------------------------
+      2020 2021 2022 2023 2024
+                  Year
+Distribution of Students
+
+Frequency
+2 | █
+1 | █   █   █
+0 +--------------------
+    100 150 180 220 280
+       Number of Students
+Year vs Students
+
+Students
+280 |                 ●
+220 |             ●
+180 |         ●
+150 |     ●
+100 | ●
+    +------------------------------
+      2020  2021  2022  2023  2024
+                  Year
