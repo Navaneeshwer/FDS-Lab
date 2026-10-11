@@ -1,0 +1,85 @@
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'ID': [1, 2, 3, 4, 5, 6],
+    'Product_name': ['Pen', 'Book', 'Pen', 'Pencil', 'Book', 'Pen'],
+    'State': ['Tamil Nadu', 'Kerala', 'Tamil Nadu',
+              'Kerala', 'Karnataka', 'Tamil Nadu'],
+    'Sales': [10, 20, 15, 25, 30, 10]
+})
+
+print("Original Data:")
+print(df)
+
+# Ungrouped Frequency Distribution
+print("\nUngrouped Frequency Distribution:")
+print(df['Sales'].value_counts().sort_index())
+
+# Grouped Frequency Distribution
+print("\nGrouped Frequency Distribution:")
+print(df.groupby('Product_name')['Sales'].sum())
+
+# Cumulative Frequency Distribution
+freq = df['Sales'].value_counts().sort_index()
+print("\nCumulative Frequency:")
+print(freq.cumsum())
+
+# Relative Frequency Distribution
+print("\nRelative Frequency:")
+print(freq / freq.sum())
+
+# State-wise Frequency Distribution
+print("\nState-wise Frequency:")
+print(df['State'].value_counts())
+
+OUTPUT:
+Original Data:
+   ID Product_name        State  Sales
+0   1          Pen   Tamil Nadu     10
+1   2         Book       Kerala     20
+2   3          Pen   Tamil Nadu     15
+3   4       Pencil       Kerala     25
+4   5         Book    Karnataka     30
+5   6          Pen   Tamil Nadu     10
+
+Ungrouped Frequency Distribution:
+Sales
+10    2
+15    1
+20    1
+25    1
+30    1
+Name: count, dtype: int64
+
+Grouped Frequency Distribution:
+Product_name
+Book      50
+Pen       35
+Pencil    25
+Name: Sales, dtype: int64
+
+Cumulative Frequency:
+Sales
+10    2
+15    3
+20    4
+25    5
+30    6
+Name: count, dtype: int64
+
+Relative Frequency:
+Sales
+10    0.333333
+15    0.166667
+20    0.166667
+25    0.166667
+30    0.166667
+Name: count, dtype: float64
+
+State-wise Frequency:
+State
+Tamil Nadu    3
+Kerala        2
+Karnataka     1
+Name: count, dtype: int64
