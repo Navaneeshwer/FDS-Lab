@@ -1,0 +1,61 @@
+import pandas as pd
+import numpy as np
+from scipy.stats import iqr
+
+# Create DataFrame
+data = {
+    'Subject_Marks': [72, 73, 72, 72, 73]
+}
+
+df = pd.DataFrame(data)
+
+print("DataFrame:")
+print(df)
+
+# Measures of Centre
+print("\nMean:")
+print(df['Subject_Marks'].mean())
+
+print("\nMedian:")
+print(df['Subject_Marks'].median())
+
+print("\nMode:")
+print(df['Subject_Marks'].mode())
+
+# Measures of Variability
+print("\nStandard Deviation:")
+print(df['Subject_Marks'].std())
+
+print("\nVariance:")
+print(df['Subject_Marks'].var())
+
+print("\nInterquartile Range:")
+print(iqr(df['Subject_Marks']))
+
+OUTPUT:
+DataFrame:
+   Subject_Marks
+0             72
+1             73
+2             72
+3             72
+4             73
+
+Mean:
+72.4
+
+Median:
+72.0
+
+Mode:
+0    72
+Name: Subject_Marks, dtype: int64
+
+Standard Deviation:
+0.5477225575051661
+
+Variance:
+0.3
+
+Interquartile Range:
+1.0
