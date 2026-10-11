@@ -1,0 +1,91 @@
+import pandas as pd
+
+# Create a DataFrame
+data = {
+    'Name': ['Arun', 'Bala', 'Cathy', 'David', 'Eva'],
+    'Age': [20, 21, None, 22, 100],
+    'Marks': [85, 90, 75, None, 95]
+}
+
+df = pd.DataFrame(data)
+
+print("Original DataFrame:")
+print(df)
+
+# Detect missing values
+print("\nMissing Values:")
+print(df.isnull())
+
+# Fill missing values
+df['Age'] = df['Age'].fillna(df['Age'].mean())
+df['Marks'] = df['Marks'].fillna(df['Marks'].mean())
+
+print("\nAfter Filling Missing Values:")
+print(df)
+
+# Data transformation using apply()
+df['Marks'] = df['Marks'].apply(lambda x: x + 5)
+
+print("\nAfter Adding 5 Marks:")
+print(df)
+
+# String operations
+df['Name'] = df['Name'].str.upper()
+
+print("\nNames in Uppercase:")
+print(df['Name'])
+
+# Display statistical information
+print("\nStatistical Description:")
+print(df.describe())
+
+# Filter records
+print("\nStudents with Marks Greater than 85:")
+print(df[df['Marks'] > 85])
+
+OUTPUT:Original DataFrame:
+    Name    Age  Marks
+0   Arun   20.0   85.0
+1   Bala   21.0   90.0
+2  Cathy    NaN   75.0
+3  David   22.0    NaN
+4    Eva  100.0   95.0
+
+Missing Values:
+    Name    Age  Marks
+0  False  False  False
+1  False  False  False
+2  False   True  False
+3  False  False   True
+4  False  False  False
+
+After Filling Missing Values:
+    Name    Age  Marks
+0   Arun  20.00  85.00
+1   Bala  21.00  90.00
+2  Cathy  40.75  75.00
+3  David  22.00  86.25
+4    Eva 100.00  95.00
+
+After Adding 5 Marks:
+    Name    Age  Marks
+0   Arun  20.00  90.00
+1   Bala  21.00  95.00
+2  Cathy  40.75  80.00
+3  David  22.00  91.25
+4    Eva 100.00 100.00
+
+Names in Uppercase:
+0     ARUN
+1     BALA
+2    CATHY
+3    DAVID
+4      EVA
+Name: Name, dtype: object
+
+Students with Marks Greater than 85:
+    Name    Age   Marks
+0   ARUN  20.00   90.00
+1   BALA  21.00   95.00
+3  DAVID  22.00   91.25
+4    EVA 100.00  100.00
