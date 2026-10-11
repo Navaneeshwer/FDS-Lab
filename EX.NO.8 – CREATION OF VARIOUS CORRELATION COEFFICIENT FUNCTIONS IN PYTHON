@@ -1,0 +1,54 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data = {
+    'Maths': [80, 85, 90, 70, 95],
+    'Science': [75, 80, 85, 65, 90],
+    'English': [70, 75, 80, 60, 85]
+}
+
+df = pd.DataFrame(data)
+
+print("Student Marks:")
+print(df)
+
+print("\nPearson Correlation:")
+print(df.corr(method='pearson'))
+
+print("\nSpearman Correlation:")
+print(df.corr(method='spearman'))
+
+print("\nKendall Correlation:")
+print(df.corr(method='kendall'))
+
+sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+plt.title("Correlation Coefficient")
+plt.show()
+
+OUTPUT:
+Student Marks:
+   Maths  Science  English
+0     80       75       70
+1     85       80       75
+2     90       85       80
+3     70       65       60
+4     95       90       85
+
+Pearson Correlation:
+         Maths  Science  English
+Maths      1.0      1.0      1.0
+Science    1.0      1.0      1.0
+English    1.0      1.0      1.0
+
+Spearman Correlation:
+         Maths  Science  English
+Maths      1.0      1.0      1.0
+Science    1.0      1.0      1.0
+English    1.0      1.0      1.0
+
+Kendall Correlation:
+         Maths  Science  English
+Maths      1.0      1.0      1.0
+Science    1.0      1.0      1.0
+English    1.0      1.0      1.0
